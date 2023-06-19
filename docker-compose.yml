@@ -9,7 +9,7 @@ services:
       - ./back-end/.env
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      
+
   api:
     container_name: api
     build: ./back-end
@@ -26,10 +26,18 @@ services:
     volumes:
       - react-volume:/var/www/html
 
-  openssl:
-    build: ./openssl
+  #openssl:
+  #build: ./openssl
+  #volumes:
+  #- ssl-certs:/certs
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
     volumes:
-      - ssl-certs:/certs
+      - ssl-certs:/etc/letsencrypt
+      - react-volume:/var/www/html
+    command: certonly --webroot --agree-tos --email thiago.lima@driven.com.br -w /var/www/html -d https://54.197.15.34 -d https://ec2-54-197-15-34.compute-1.amazonaws.com
 
   nginx:
     container_name: nginx
@@ -44,7 +52,8 @@ services:
       - postgres
       - api
       - spa
-      - openssl
+      #- openssl
+      - certbot
 
 volumes:
   postgres-data:
