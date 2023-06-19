@@ -8,7 +8,7 @@ export function Home() {
   async function addNewName() {
     const API_URL = import.meta.env.VITE_REACTAPP_BACKEND_URL;
     try {
-      await axios.get(`${API_URL}/add`);
+      await axios.get(`${API_URL}add`);
       setAlertMessage("Nome adicionado com sucesso!");
     } catch (error) {
       console.log(error);

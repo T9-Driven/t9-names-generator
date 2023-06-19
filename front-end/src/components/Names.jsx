@@ -9,7 +9,7 @@ export function Names() {
   async function fetchNames() {
     const API_URL = import.meta.env.VITE_REACTAPP_BACKEND_URL;
     try {
-      const { data } = await axios.get(`${API_URL}/all`);
+      const { data } = await axios.get(`${API_URL}all`);
       const names = data.map(({ name }) => name);
       setNames(names);
     } catch (error) {
