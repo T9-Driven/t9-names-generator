@@ -37,7 +37,7 @@ services:
     volumes:
       - ssl-certs:/etc/letsencrypt
       - react-volume:/var/www/html
-    command: certonly --webroot --agree-tos --email thiago.lima@driven.com.br -w /var/www/html -d ec2-54-197-15-34.compute-1.amazonaws.com
+    command: certonly --webroot --agree-tos --email thiago.lima@driven.com.br -w /var/www/html -d www.ec2-54-197-15-34.compute-1.amazonaws.com
 
   nginx:
     container_name: nginx
