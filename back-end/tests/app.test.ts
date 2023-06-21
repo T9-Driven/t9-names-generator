@@ -13,7 +13,6 @@ describe("integration test", () => {
   it("should register a user", async () => {
     const { status } = await agent.get("/add");
     expect(status).toBe(httpStatus.CREATED);
-
     const users = await prisma.user.findMany();
     expect(users).toHaveLength(1);
   });
