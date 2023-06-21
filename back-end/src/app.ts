@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 app.use(cors());
+
 app.get("/add", async (req: Request, res: Response) => {
   try {
     const user = await prisma.user.create({
